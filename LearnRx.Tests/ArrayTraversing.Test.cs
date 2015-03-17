@@ -7,17 +7,28 @@ using NSubstitute;
 namespace LearnRx.Tests
 {
     [TestClass]
-    public class ArrayTraversing
+    public class ArrayTraversingTest
     {
         [TestMethod]
         public void TestPrintNames()
         {
             var logger = Substitute.For<ILogger>();
             var names = new List<string>();
-            logger.Log(Arg.Do<object>(e=> names.Add(e.ToString())));
-            LearnRx.ArrayTraversing.PrintNames(logger);
-            Assert.AreEqual(8, names.Count);
-            Assert.IsTrue(names.SequenceEqual(new[] {"Ben", "Adam", "Mike", "Billy", "Jacob", "Zach", "Kevin", "Vanessa"}));
+            logger.Log(Arg.Do<object>(e => names.Add(e.ToString())));
+            ArrayTraversing.PrintNames(logger);
+            Assert.AreEqual(ArrayTraversing.Names.Count(), names.Count);
+            Assert.IsTrue(names.SequenceEqual(ArrayTraversing.Names));
+        }
+
+        [TestMethod]
+        public void TestPrintNamesForEach()
+        {
+            var logger = Substitute.For<ILogger>();
+            var names = new List<string>();
+            logger.Log(Arg.Do<object>(e => names.Add(e.ToString())));
+            ArrayTraversing.PrintNamesForEach(logger);
+            Assert.AreEqual(ArrayTraversing.Names.Count(), names.Count);
+            Assert.IsTrue(names.SequenceEqual(ArrayTraversing.Names));
         }
     }
 }
