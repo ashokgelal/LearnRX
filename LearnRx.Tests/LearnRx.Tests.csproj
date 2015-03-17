@@ -55,6 +55,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ArrayProjectionTest.cs" />
     <Compile Include="ArrayTraversing.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
