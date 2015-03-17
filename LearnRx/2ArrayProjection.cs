@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LearnRx
 {
@@ -14,11 +13,10 @@ namespace LearnRx
 
         public IEnumerable<VideoTitle> GetVideoAndTitlePairs()
         {
-            // ------------   INSERT CODE HERE!  -----------------------------------
-            // Use foreach loop to accumulate VideoTitle from each video and 
-            // return the result.
-            // ------------   INSERT CODE HERE!  -----------------------------------
-            throw new NotImplementedException("Implement GetVideoAndTitlePairs()");
+            foreach (var release in _dataSource)
+            {
+                yield return new VideoTitle(release.Id, release.Title);
+            }
         }
     }
 }
