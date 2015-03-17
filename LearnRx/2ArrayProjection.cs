@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LearnRx.Extensions;
 
 namespace LearnRx
 {
@@ -13,10 +14,7 @@ namespace LearnRx
 
         public IEnumerable<VideoTitle> GetVideoAndTitlePairs()
         {
-            foreach (var release in _dataSource)
-            {
-                yield return new VideoTitle(release.Id, release.Title);
-            }
+            return _dataSource.Map(release => new VideoTitle(release.Id, release.Title));
         }
     }
 }
